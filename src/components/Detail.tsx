@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PageHeader, Button, Input } from 'antd';
 import { BookOutlined } from '@ant-design/icons';
 
@@ -10,12 +10,18 @@ const { TextArea } = Input;
 
 interface DetailProps {
   book: BookResType | null | undefined;
+  getBooks: () => void;
   logout: () => void;
+  goEdit: (bookId: number | null | undefined) => void;
 }
 
 // [project] 컨테이너에 작성된 함수를 컴포넌트에서 이용했다.
 // [project] BookResType 의 응답 값을 이용하여, Detail 컴포넌트를 완성했다.
-const Detail: React.FC<DetailProps> = ({ book, logout }) => {
+const Detail: React.FC<DetailProps> = ({ book, logout, goEdit, getBooks }) => {
+  useEffect(() => {
+    getBooks();
+  }, [getBooks]);
+
   if (book === null) {
     return null;
   }
@@ -33,10 +39,10 @@ const Detail: React.FC<DetailProps> = ({ book, logout }) => {
       <PageHeader
         title={
           <div>
-            <BookOutlined /> {'book.title'}
+            <BookOutlined /> {book.title}
           </div>
         }
-        subTitle={'{book.author}'}
+        subTitle={book.author}
         extra={[
           <Button
             key="2"
@@ -64,7 +70,7 @@ const Detail: React.FC<DetailProps> = ({ book, logout }) => {
         <div className={styles.message}>
           <TextArea
             rows={4}
-            value={'{book.message}'}
+            value={book.message}
             readOnly
             className={styles.message_textarea}
           />
@@ -74,6 +80,10 @@ const Detail: React.FC<DetailProps> = ({ book, logout }) => {
     </Layout>
   );
 
-  function click() {}
+  function click() {
+    const bookId = book && book.bookId;
+
+    goEdit(bookId);
+  }
 };
 export default Detail;

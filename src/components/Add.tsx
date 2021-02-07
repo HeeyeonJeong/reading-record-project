@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { message as messageDialog, PageHeader, Input, Button } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { FormOutlined } from '@ant-design/icons';
@@ -9,14 +9,27 @@ import styles from './Add.module.css';
 interface AddProps {
   loading: boolean;
   logout: () => void;
+  getBooks: () => void;
+  addBook: (book: BookReqType) => void;
+}
+
+interface BookReqType {
+  title: string;
+  author: string;
+  message: string;
+  url: string;
 }
 
 // [project] 컨테이너에 작성된 함수를 컴포넌트에서 이용했다.
-const Add: React.FC<AddProps> = ({ loading, logout }) => {
+const Add: React.FC<AddProps> = ({ loading, logout, addBook, getBooks }) => {
   const titleRef = React.useRef<Input>(null);
   const messageRef = React.useRef<TextArea>(null);
   const authorRef = React.useRef<Input>(null);
   const urlRef = React.useRef<Input>(null);
+
+  useEffect(() => {
+    getBooks();
+  }, [getBooks]);
 
   return (
     <Layout>
@@ -108,6 +121,8 @@ const Add: React.FC<AddProps> = ({ loading, logout }) => {
       messageDialog.error('Please fill out all inputs');
       return;
     }
+
+    addBook({ title, message, author, url });
   }
 };
 export default Add;
