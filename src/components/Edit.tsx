@@ -134,12 +134,7 @@ const Edit: React.FC<EditProps> = ({
     const url = urlRef.current!.state.value;
     const bookId = book && book.bookId;
 
-    if (
-      title === undefined ||
-      message === undefined ||
-      author === undefined ||
-      url === undefined
-    ) {
+    if (title === '' || message === '' || author === '' || url === '') {
       messageDialog.error('Please fill out all inputs');
       return;
     }
