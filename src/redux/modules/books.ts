@@ -132,7 +132,11 @@ function* editBookSaga(action: editBookSagaAction) {
     const bookData = yield call(BookService.editBook, token, bookId, book);
     const books: BookResType[] = yield select(getBooksFromState);
     yield put(
-      success(books.map((book) => (book.bookId === bookId ? bookData : books))),
+      success(
+        books.map((book) =>
+          book.bookId === bookData.bookId ? bookData : book,
+        ),
+      ),
     );
     yield put(push('/'));
   } catch (e) {
