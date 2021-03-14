@@ -16,8 +16,6 @@ interface BookProps extends BookResType {
   goEdit: (bookId: number) => void;
 }
 
-// [project] 컨테이너에 작성된 함수를 컴포넌트에서 이용했다.
-// [project] BookResType 의 응답 값을 이용하여, Book 컴포넌트를 완성했다.
 const Book: React.FC<BookProps> = ({
   bookId,
   title,
@@ -56,7 +54,11 @@ const Book: React.FC<BookProps> = ({
           >
             수정
           </button>
-          <button type="button" onClick={() => deleteBook(bookId)}>
+          <button
+            type="button"
+            onClick={() => deleteBook(bookId)}
+            className={styles.button_delete}
+          >
             삭제
           </button>
         </div>

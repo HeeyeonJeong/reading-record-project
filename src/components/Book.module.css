@@ -49,8 +49,26 @@
 
 .button_url {
   margin-right: 5px;
+  width: 42px;
+  height: 26px;
+  vertical-align: top;
+  background-color: transparent;
+  border: 1px solid;
+  cursor: pointer;
+  color: gray;
 }
 
 .button_edit {
   margin-right: 5px;
+  background-color: transparent;
+  border: 1px solid;
+  cursor: pointer;
+  color: rgb(39, 68, 236);
+}
+
+.button_delete {
+  background-color: transparent;
+  border: 1px solid;
+  cursor: pointer;
+  color: rgb(223, 78, 78);
 }
