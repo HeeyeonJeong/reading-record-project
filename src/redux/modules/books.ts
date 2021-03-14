@@ -23,7 +23,6 @@ const options = {
   prefix: 'my-books/books',
 };
 
-// [project] redux-action 을 이용하여, books 모듈의 액션 생성 함수와 리듀서를 작성했다.
 export const { success, pending, fail } = createActions(
   {
     SUCCESS: (books: BookResType[]) => ({ books }),
@@ -57,11 +56,6 @@ const reducer = handleActions<BooksState, any>(
 
 export default reducer;
 
-// [project] 책 목록을 가져오는 saga 함수를 작성했다.
-// [project] 책을 추가하는 saga 함수를 작성했다.
-// [project] 책을 삭제하는 saga 함수를 작성했다.
-// [project] 책을 수정하는 saga 함수를 작성했다.
-
 export const { addBook, editBook, deleteBook, getBooks } = createActions(
   {
     ADD_BOOK: (book: BookReqType) => ({
@@ -77,7 +71,6 @@ export const { addBook, editBook, deleteBook, getBooks } = createActions(
   options,
 );
 
-// [project] saga 함수를 실행하는 액션과 액션 생성 함수를 작성했다.
 export function* sagas() {
   yield takeEvery(`${options.prefix}/GET_BOOKS`, getBooksSaga);
   yield takeEvery(`${options.prefix}/ADD_BOOK`, addBookSaga);

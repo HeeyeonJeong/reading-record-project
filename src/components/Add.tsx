@@ -20,7 +20,6 @@ interface BookReqType {
   url: string;
 }
 
-// [project] 컨테이너에 작성된 함수를 컴포넌트에서 이용했다.
 const Add: React.FC<AddProps> = ({ loading, logout, addBook, getBooks }) => {
   const titleRef = React.useRef<Input>(null);
   const messageRef = React.useRef<TextArea>(null);
