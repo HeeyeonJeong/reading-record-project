@@ -52,25 +52,25 @@ const Signin: React.FC<SigninProps> = ({ loading, login, error }) => {
                 <span className={styles.required}> *</span>
               </div>
               <div className={styles.input_area}>
-                <Input
+                {/* <Input
                   placeholder="Email"
                   autoComplete="email"
                   name="email"
                   ref={emailRef}
                   className={styles.input}
-                />
+                /> */}
               </div>
               <div className={styles.password_title}>
                 Password
                 <span className={styles.required}> *</span>
               </div>
               <div className={styles.input_area}>
-                <Input
+                {/* <Input
                   type="password"
                   autoComplete="current-password"
                   ref={passwordRef}
                   className={styles.input}
-                />
+                /> */}
               </div>
               <div className={styles.button_area}>
                 <Button
@@ -90,8 +90,8 @@ const Signin: React.FC<SigninProps> = ({ loading, login, error }) => {
   );
 
   function click() {
-    const email = emailRef.current?.state.value;
-    const password = passwordRef.current?.state.value;
+    const email = 'junghy14971@gmail.com';
+    const password = 'bdreact3';
 
     login({ email, password });
   }
