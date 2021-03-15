@@ -22,6 +22,7 @@ TypeScript, React와 Redux-saga로 구현한 독서 기록 사이트
 
 ![image](https://user-images.githubusercontent.com/70693728/111073634-cbd44300-8522-11eb-8387-20af634480e6.png)
 
+- [Link](https://reading-record.netlify.app)
 - [Problem & Solution 정리](https://heeyeonjeong.tistory.com/93?category=945817)
 
 <br/>
